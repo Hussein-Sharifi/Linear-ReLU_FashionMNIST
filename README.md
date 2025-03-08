@@ -11,4 +11,4 @@ Neural Network with a 3-layer linear/ReLU stack.
 | Accuracy  | 70%   |
 | Loss      | 0.789 |
 
-Note: this model is based on this [PyTorch Tutorial](https://pytorch.org/tutorials/beginner/basics/intro.html)
+Note: this model is based on [this PyTorch Tutorial](https://pytorch.org/tutorials/beginner/basics/intro.html)
