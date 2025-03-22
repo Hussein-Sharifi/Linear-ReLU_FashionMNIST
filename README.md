@@ -3,12 +3,6 @@
 ## Overview
 Repo for practicing fully connected neural network classification model.
 
-## Results
-| Metric    | Value  |
-|-----------|--------|
-| Accuracy  | 70%    |
-| Avg Loss  | 0.789  |
-
 ## Repository Structure
 ```
 FashionMNIST-Classification/
@@ -27,6 +21,12 @@ self.linear_relu_stack = nn.Sequential(
     nn.Linear(512, 10)
 )
 ```
+
+## Results
+| Metric    | Value  |
+|-----------|--------|
+| Accuracy  | 70%    |
+| Avg Loss  | 0.789  |
 
 ## Training Parameters
 - Loss Function    |   CrossEntropyLoss
