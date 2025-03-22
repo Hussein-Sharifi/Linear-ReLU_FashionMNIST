@@ -1,7 +1,9 @@
 # FashionMNIST Classification with a Neural Network
 
 ## Overview
+
 Repo for practicing fully connected neural network classification model.
+
 
 ## Repository Structure
 ```
@@ -35,10 +37,8 @@ self.linear_relu_stack = nn.Sequential(
 - Learning Rate    |   0.001
 - Epochs           |   10
 
-
 ## References
 This model is based on [this PyTorch tutorial](https://pytorch.org/tutorials/).
 
 ## License
 This project is open-source. Feel free to use and modify it.
-
