@@ -1,7 +1,7 @@
 # FashionMNIST Classification with a Neural Network
 
 ## Overview
-Repo for practicing nn classification model.
+Repo for practicing fully connected neural network classification model.
 
 ## Results
 | Metric    | Value  |
