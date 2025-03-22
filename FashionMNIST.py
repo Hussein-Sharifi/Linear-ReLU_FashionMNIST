@@ -1,13 +1,11 @@
-# %% Importing dependencies
-
+# %% Import dependencies
 import torch
 from torch import nn
 from torch.utils.data import DataLoader
 from torchvision import datasets
 from torchvision.transforms import ToTensor
 
-# %% Loading preprocessed dataset
-
+# %% Load train and test datasets
 training_data = datasets.FashionMNIST(
     root="data",
     train=True,
@@ -22,14 +20,11 @@ test_data = datasets.FashionMNIST(
     transform=ToTensor()
 )
 
-# %% Preparing batches using dataloader
-
+# %% Define dataloaders
 train_dataloader = DataLoader(training_data, batch_size=64)
 test_dataloader = DataLoader(test_data, batch_size=64)
 
-
-# %% Building nn
-
+# %% Define nn model
 class NeuralNetwork(nn.Module):
     def __init__(self):
         super().__init__()
@@ -46,13 +41,9 @@ class NeuralNetwork(nn.Module):
         x = self.flatten(x)
         logits = self.linear_relu_stack(x)
         return logits
-
-
 model = NeuralNetwork()
 
-# %% Setting optimizer, loss function and hyperparameters. We are using
-#    cross entropy and stochastic gradient descent.
-
+# %% Set hyperparameters and define optimizer and loss functions
 learning_rate = 1e-3
 batch_size = 64
 epochs = 10
@@ -60,9 +51,7 @@ epochs = 10
 loss_fn = nn.CrossEntropyLoss()
 optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
 
-
-# %% train loop
-
+# %% Define train loop
 def train_loop(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
     model.train()
@@ -78,9 +67,7 @@ def train_loop(dataloader, model, loss_fn, optimizer):
             loss, current = loss.item(), batch*batch_size+len(x)
             print(f"loss: {loss:>7f} [{current:>5d}/{size:5>d}")
 
-
-# %% test loop
-
+# %% Define test loop
 def test_loop(dataloader, model, loss_fn):
     size = len(dataloader.dataset)
     num_batches = len(dataloader)
@@ -98,16 +85,12 @@ def test_loop(dataloader, model, loss_fn):
     print(f"Test Error: \n Accuracy: {correct*100:>0.1f}% \
                            Avg loss: {test_loss:>8f} \n")
 
-
-# %% Run the loop!
-
+# %% Run train and test loops
 for t in range(epochs):
     print(f"Epoch: {t+1}\n-------------------------")
     train_loop(train_dataloader, model, loss_fn, optimizer)
     test_loop(test_dataloader, model, loss_fn)
 print("Done!")
 
-
 # %% Save model weights:
-
 torch.save(model.state_dict(), "model_weights.pth")
